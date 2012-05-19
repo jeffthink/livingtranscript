@@ -1,0 +1,31 @@
+<div id="login-box" class="span12 offset6">
+  <h2>Your informations, please...</h2>
+  <fieldset id="login">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <%= render :partial => 'common/error_message' %>
+      <div class="clearfix">
+        <%= f.label :email %>
+        <div class="input">
+          <%= f.email_field :email, :class => 'span10'%>
+        </div>
+      </div>
+      <div class="clearfix">
+        <%= f.label :password %>
+        <div class="input">
+          <%= f.password_field :password, :class => 'span10' %>
+        </div>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="clearfix">
+          <div class="input">
+            <div class="inline-form"><%= f.check_box :remember_me%> <span>Remember me</span></div>
+            <div class="inline-form right"><a href="/users/password/new">I forgot. Help!</a></div>
+          </div>
+        </div>
+      <% end -%>
+      <div class="actions">
+        <%= f.submit "Sign in", :class => "btn primary" %>
+      </div>
+    <% end %>
+  </fieldset>
+</div>

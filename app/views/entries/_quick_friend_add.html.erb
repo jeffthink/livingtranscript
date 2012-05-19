@@ -1,0 +1,22 @@
+<div id="quick-friend-add">
+  <h4>Suggest Entry to Friend</h4>
+  <%= form_for Entry.new, :as => :entry, :html => {:id => "new-entry-quick-add"} do |f| %>
+  <fieldset id="friend-entry">
+    <div class="clearfix">
+      <%= text_area_tag :title, "",  :placeholder => "suggest entry title...", :class => "span7" %>
+    </div>
+    <div class="clearfix">
+      <%= text_field_tag :new_entry_suggestions, "", :placeholder => "add emails (comma separated)...", :class => "span7" %>
+    </div>
+    <div id="suggest-friend-message" style="display:none;">
+      <div id="suggest-friend-spinner" class="loading-spinner"></div>
+      <div id="entry-suggest-message"></div>
+    </div>
+    <div class="clearfix">
+      <%= hidden_field_tag "add-to-my-lt", "0"  %>
+      <%= hidden_field_tag "suggest-to-others", "1"  %>
+      <%= submit_tag "Quick Add", :class => "btn primary" %>
+    </div>
+  </fieldset>
+  <% end %>
+</div>

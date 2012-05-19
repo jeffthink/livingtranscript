@@ -1,0 +1,39 @@
+<div id="skill-filter" class="span15">
+  <%= form_tag "admin/skill_search", :id => "skill-filter-form" do %>
+  <fieldset>
+    <div class="clearfix">
+      <%= label_tag 'tags', 'Skill Tags:' %>
+      <ul id="admin-skill-filter-tag-cloud" class="tagcloud selectable"></ul>
+      <ul id="admin-skill-filter-tag-cloud-operator">
+        <li>
+          <label>
+            <%= radio_button_tag 'tag_operator', 'and', true %>
+            <span>AND</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <%= radio_button_tag 'tag_operator', 'or' %>
+            <span>OR</span>
+          </label>
+        </li>
+      </ul>
+      <%= hidden_field_tag 'skill_all_tags', "" %>
+      <%= hidden_field_tag 'skill_selected_tags', "" %>
+    </div>
+    <div class="clearfix">
+      <%= label_tag 'date_range', 'Date Range:' %>
+      <div class="input">
+        <div class="inline-inputs">
+          <input id="skill-date-range-start" class="small" type="text" value="10/13/2011">
+          to
+          <input id="skill-date-range-end" class="small" type="text" value="<%= Date.today.strftime("%m/%d/%Y") %>">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+  <div id="skill-filter-results" class="span15">
+
+  </div>
+</div>

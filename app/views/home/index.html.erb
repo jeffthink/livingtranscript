@@ -1,0 +1,38 @@
+<%- if !current_user.is_recommender? -%>
+<div id="sidebar" class="span5 offset1">
+  <%= render :partial => "home/sidebar" %>
+</div>
+<div id="main" class="span16 offset1">
+<%- else -%>
+<div id="main" class="span22 offset1">
+<%- end -%>
+  <%= render :partial => "messages" %>
+  <ul class="tabs">
+    <%- if current_user.is_recommender? -%>
+      <li class="entries-tab-link active">
+        <a href="#tabs?tab=recommendations">Recommendations</a>
+      </li>
+    <%- else -%>
+      <li class="entries-tab-link active">
+        <a href="#tabs?tab=entries">Entries</a>
+      </li>
+      <li class="recommendations-tab-link">
+        <a href="#tabs?tab=recommendations">Recommendations</a>
+      </li>
+      <li class="tags-tab-link">
+        <a href="#tabs?tab=tags">Tags</a>
+      </li>
+    <%- end -%>
+  </ul>
+  <div class="tab-content">
+    <%- if current_user.is_recommender? -%>
+      <%= render :partial => "recommendations/recommendations_tab" %>
+    <%- else -%>
+      <%= render :partial => "entries/entries_tab" %>
+    <%- end -%>
+  </div>
+</div>
+<div class="loading-overlay" style="display:none;"></div>
+<%- if !current_user.is_recommender? -%>
+<%= render 'workspace' %>
+<%- end -%>

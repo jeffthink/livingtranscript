@@ -1,0 +1,15 @@
+<div id="main" class="span14 offset1">
+  <ul class="tabs">
+    <li class="active">
+      <a href="#recommendations-tab">Recommendations</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="recommendations-tab" class="active">
+      <%- if @recommendation.status == Recommendation::STATUS_NEW -%>
+        <%= render :partial => "new_recommendation", :object => @recommendation %>
+      <%- end -%>
+    </div>
+  </div>
+</div>
+<%= render 'home/workspace' %>

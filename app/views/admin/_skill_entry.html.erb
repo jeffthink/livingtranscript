@@ -1,0 +1,62 @@
+<%- e = skill_entry -%>
+<div class="skill-user-entry" data-entry-id="<%= e.id %>">
+  <div class="skill-user-title"><%= e.title %></div>
+  <div class="skill-user-date"><%= e.updated_at.strftime("%m/%d/%Y") %></div>
+  <div class="clear"></div>
+  <div class="skill-user-details">
+    <div id="skill-user-tags">
+      <u>Self Tags:</u> 
+      <%- if e.entries_tags.count > 0 -%>
+        <%= tag_names = e.entries_tags.map{|et| 
+          tag_name = nil
+          @tags.each{|t| 
+            if t.id == et.tag_id
+              tag_name = t.name
+              break
+            end
+          }
+          tag_name
+        }
+        tag_names.join(", ") %>
+      <%- else -%>
+        none
+      <%- end -%>
+    </div>
+    <div id="skill-user-recs">
+      <u>Rec Tags:</u> 
+      <%- if e.recommendations_tags.count > 0 -%>
+        <%= tag_names = e.recommendations_tags.map{|et| 
+          nextFlag = false
+          e.recommendations.each{|r| 
+            if r.id == et.recommendation_id
+              nextFlag = true if r.status != "CONFIRMED"
+              break
+            end
+          }
+
+          nil
+
+          next if nextFlag
+
+          tag_name = nil
+          @tags.each{|t| 
+            if t.id == et.tag_id
+              tag_name = t.name
+              break
+            end
+          }
+          tag_name
+        }
+        tag_name_list = tag_names.join(", ") 
+        if tag_name_list == ""
+          "none"
+        end
+      %>
+      <%- else -%>
+        none
+      <%- end -%>
+      (<%= pluralize(e.recommendations.confirmed.count, 'recommendation')%>, <i><%= e.recommendations.pending.count%> pending</i>)
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

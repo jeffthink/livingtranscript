@@ -1,0 +1,24 @@
+<div id="quick-add" class="tab-section">
+  <h4>Quick Add</h4>
+  <%= form_for Entry.new, :as => :entry, :html => {:id => "new-entry-quick-add"} do |f| %>
+  <fieldset id="entry">
+    <div class="clearfix">
+      <div id="entry-quick-add-line1">
+        <%= f.text_field :title, :id => "entry-title", :value => "quick entry...", :class => "xlarge default-text" %>
+        <%= submit_tag "Quick Add", :class => "btn primary" %>
+      </div>
+      <div id="entry-quick-add-line2">
+        <div id="entry-quick-add-my-lt" class="inline-form">
+          <%= check_box_tag "add-to-my-lt", "1", true  %>
+          <label for="add-to-my-lt">Add to My LT</label>
+        </div>
+        <div id="entry-quick-add-suggest" class="inline-form">
+          <%= check_box_tag "suggest-to-others", "1", false  %>
+          <label for="suggest-to-others">Suggest to Others</label>
+          <%= text_field_tag :new_entry_suggestions, "Add emails (comma separated)", :class => "default-text" %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+</div>

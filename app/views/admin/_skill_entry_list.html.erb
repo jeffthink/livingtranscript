@@ -1,0 +1,16 @@
+<div>
+  <span id="num-entries"><%= @entries.count.to_s + " matching entries:" %></span>
+  <%- curr_user = nil -%>
+  <%- @entries.each{|entry| -%>
+    <%- if !curr_user || curr_user != entry.user.id -%>
+      <%- curr_user = entry.user.id -%>
+      </div>
+      <div class="skill-user-item">
+        <div class="skill-user-name"><%=entry.user.full_name=%></div>
+    <%- else -%>
+        <div class="separator"></div>
+    <%- end -%>
+
+    <%= render :partial => 'admin/skill_entry', :object => entry %>
+  <%- } -%>
+</div>

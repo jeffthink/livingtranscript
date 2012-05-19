@@ -1,0 +1,55 @@
+<div class="container">
+  <div id="workspace-header" class="dark-gray-gradient">
+    <h3>Edit Entry</h3>
+  </div>
+  <div id="workspace-inner" class="row">
+    <%= form_for @entry, :as => :entry, :url => { :controller => "entries", :action => "update" }, :html => {:id => "edit-entry", :method=>"PUT"} do |f| %>
+      <fieldset id="entry">
+        <div class="row">
+          <div class="span8 columns">
+            <div class="clearfix">
+              <%= f.text_field :title, :id => "entry-title", :class => "xlarge", :placeholder=>"entry..." %>
+            </div>
+            <div class="clearfix">
+              <%= f.text_area :reflection, :id => "entry-reflection", :size => "57x9", :class => "xlarge", :placeholder => "reflection..." %>
+              <span class="help-block">Describe the event, and what it showed about yourself</span>
+            </div>
+          </div>
+          <div class="span8 columns">
+            <div id="accordion">
+              <h4><a href="#">Select Tags</a></h4>
+              <div>
+                <ul id="workspace-tag-cloud" style="height:65px"></ul>
+                <%- tags = @entry.tags.collect{|t| t.name }.join(",") -%>
+                <%= text_field_tag :entry_tags, tags, :class => "tags-input" %>
+              </div>
+              <h4><a href="#">Choose Evidence</a></h4>
+              <div class="clearfix">
+                <div class="input-prepend" style="margin-top:20px;">
+                  <span class="add-on">http://</span>
+                  <%- e = (@entry.evidence.any?) ? @entry.evidence.first.url[7..-1] : "" -%>
+                  <%= text_field_tag :entry_evidence, e, :placeholder => "add link for evidence...", :class => "xlarge" %>
+                </div>
+                <span class="help-block">e.g. youtube videos, blog posts, public google docs, etc.</span>
+              </div>
+              <h4><a href="#">Invite Recommendations</a></h4>
+              <div>
+                <div style="margin-top:10px;">
+                  <%= text_area_tag :recommendation_message, "", :id => "entry-request-message", :size => "50x2", :class => "span12", :placeholder => "(optional) message to new recommenders..." %>
+                </div>
+                <div style="margin-top:10px;">
+                  <%= text_field_tag :recommendation_emails, "", :placeholder => "email addresses of new recommenders*...", :class => "span12" %>
+                  <span class="help-block">* comma separated list of email addresses</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Save", :class => "btn primary" %>
+          <a id="cancel-edit-entry" href="#" class="btn default">Cancel</a>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

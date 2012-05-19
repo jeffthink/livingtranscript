@@ -1,0 +1,20 @@
+<%- workspace_height = "355px;" -%>
+<%- workspace_height = "35px;" if (current_user.is_recommender? && !@recommendation) || current_user.entries.any?-%>
+<div id="workspace" class="bottombar" style="height: <%= workspace_height %>">
+  <div class="container">
+    <div id="workspace-header" class="dark-gray-gradient">
+      <%- if @recommendation -%>
+      <h3>Add Recommendation</h3>
+      <%- else -%>
+      <h3>Add Entry</h3>
+      <%- end -%>
+    </div>
+    <div id="workspace-inner" class="row">
+      <%- if @recommendation -%>
+        <%= render :partial => "recommendations/edit_recommendation", :object => @recommendation %>
+      <%- else -%>
+        <%= render :partial => "entries/new_entry" %>
+      <%- end -%>
+    </div>
+  </div>
+</div>

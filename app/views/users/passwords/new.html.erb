@@ -1,0 +1,17 @@
+<div id="forgot-password-box" class="span12 offset6">
+  <h2>Forgot your password?</h2>
+  <fieldset id="forgot-password">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= render :partial => 'common/error_message' %>
+    <div class="clearfix">
+      <%= f.label :email %>
+      <div class="input">
+        <%= f.email_field :email, :class => 'span10'%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", :class => "btn primary" %>
+    </div>
+    <% end %>
+  </fieldset>
+</div>

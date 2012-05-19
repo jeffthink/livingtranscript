@@ -1,0 +1,299 @@
+html, body{
+  height:100%;
+}
+
+body {
+  padding-top:40px;
+  background-color:#E5B051;
+}
+
+#work-page-container {
+  padding-top:30px;
+  background-color:#FFFFFF;
+}
+
+.dark-gray-gradient {
+  #gradient > .vertical(#222, #444);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.bottombar {
+  height: 360px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  overflow: visible;
+
+  h3 {
+    color: #FFF;
+    padding-left: 10px;
+
+  }
+  #workspace-header {
+    cursor: pointer;
+  }
+
+  .span8{
+    width: 440px;
+  }
+
+  .row{
+    margin:0px;
+  }
+}
+
+#workspace-inner {
+  border: 4px solid #444;
+  margin: 0px;
+  background: white;
+}
+
+#entry-title, #entry-reflection{
+  width: 430px;
+}
+
+.entry-title h5{
+  font-size: 16px;
+}
+
+.entry-subitems{
+  display:inline-block;
+}
+
+.help-block{
+  color: #646060;
+}
+
+.actions{
+  text-align: center;
+  padding: 0 0 0 20px;
+  margin-top:0px;
+  border: 0px;
+  background: #FFFFFF;
+}
+
+.topbar div > ul span, .nav span {
+  display: block;
+  float: none;
+  padding: 10px 10px 11px;
+  line-height: 19px;
+}
+
+.topbar h3{
+  a{
+    padding-right: 10px;
+  }
+}
+
+.topbar h4{
+  position: relative;
+  font-size: 12px;
+  a{
+    float:left;
+    display:block;
+    line-height: 2.5;
+  }
+}
+
+.tab-content > * {
+  display:none;
+}
+.tab-content > .active {
+  display: block;
+}
+
+.tab-section{
+  padding-left:10px;
+}
+
+#sidebar h4, #main-admin h4{
+  padding-bottom: 1px;
+  border-bottom:1px dotted #CCC;
+  margin-bottom: 8px;
+  line-height: 30px;
+}
+
+#quick-friend-add, #recent-tags{
+  margin-top:20px;
+}
+
+#quick-friend-add fieldset{
+  padding-top:9px;
+}
+
+.tab-section h4{
+  .span14;
+  background-color:#EEE;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.entry{
+  margin-left:10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 5px;
+}
+
+#recommendations-tab p, #detailed-entry, #detailed-recommendation{
+  margin-left:10px;
+}
+
+.recommendation{
+  margin-left:10px;
+}
+
+#curr-content{
+  margin: 0 20px 0 20px;
+}
+#new-entry-quick-add {
+  label {
+    float: none;
+  }
+  label[for="add-to-my-lt"] {
+    width: 100px;
+  }
+  .inline-form {
+    width: 130px;
+    height: 30px;
+    float: left
+  }
+  #entry-quick-add-line2 {
+    padding-top: 10px;
+  }
+  #entry-quick-add-my-lt {
+    margin-top: 5px;
+  }
+  #entry-quick-add-suggest {
+    width: 400px;
+  }
+}
+#recommendation_text, #recommendation_feedback{
+  width: 430px;
+}
+#recommendation_text {
+  height: 90px;
+}
+#recommendation_feedback {
+  height: 50px;
+}
+
+.inline-form{
+  color:#00000;
+  display: inline-block;
+}
+
+.right{
+  float: right;
+}
+
+.inline-form.right{
+  margin-right:22px;
+}
+
+#new_entry_tags_tagsinput{
+  margin-top:10px;
+}
+
+.tab-content {
+  position: relative;
+}
+.loading-overlay{
+  background: url(/images/ajax-loader.gif) center center no-repeat #FFF;
+  opacity: 0.75;
+  position: absolute;
+}
+
+.loading-spinner {
+  background: url(/images/ajax-loader.gif) center center no-repeat #FFF;
+  width: 25px;
+  height: 25px;
+}
+
+.tagcloud.noninteractive li a{
+  cursor:default;
+}
+
+.tagcloud.noninteractive li a:hover{
+  text-decoration:none;
+}
+
+#skill-filter{
+  label{
+    text-align:left;
+    width: 150px;
+  }
+  li{
+    display:inline;
+    label{
+      width: 100px;
+    }
+  }
+
+  fieldset{
+    border-bottom:1px dotted #CCCCCC;
+  }
+}
+
+#admin-skill-filter-tag-cloud{
+  float:left;
+  width:300px;
+}
+
+#admin-skill-filter-tag-cloud-operator{
+  float:right;
+  width:100px;
+}
+
+#num-entries{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.skill-user-item{
+  .span15;
+  margin-top:10px;
+  border: 1px solid #000000;
+
+  .skill-user-name{
+    padding:3px;
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom: 1px solid #000000;
+  }
+
+  .skill-user-title{
+    float:left;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left:10px;
+  }
+
+  .skill-user-details{
+    margin: 3px 10px 0 10px;
+  }
+
+  .skill-user-date{
+    float:right;
+    font-style:italic;
+    margin-right:10px;
+  }
+
+  .skill-user-entry{
+    float:left;
+    padding:10px 0;
+    .span15;
+  }
+
+  .separator{
+    border-top:1px dotted #CCCCCC;
+    margin: 0 10px;
+  }
+}
+
+.clear{
+  clear:both;
+}

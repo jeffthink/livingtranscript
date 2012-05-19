@@ -1,0 +1,43 @@
+<div id="entries-tab" class="active">
+  <%- if @entry -%>
+  <ul class="breadcrumb">
+    <li><a href="#tabs?tab=entries">Entries</a> <span class="divider">/</span></li>
+    <li class="active"><%= @entry.title %></li>
+  </ul>
+  <div id="detailed-entry">
+    <h3><%= @entry.title %></h3>
+    <%- if @entry.reflection -%>
+      <h6>reflection:</h6>
+      <blockquote>
+        <%= @entry.reflection %>
+      </blockquote>
+    <%- end -%>
+    <%- if @entry.tags.any? -%>
+      <h6>tags</h6>
+      <blockquote>
+        <%= @entry.tags.collect{|t| t.name.capitalize}.join(" | ") %>
+      </blockquote>
+    <%- end -%>
+    <%- if @entry.evidence.any? -%>
+      <h6>evidence</h6>
+      <blockquote>
+        <a href="<%= @entry.evidence.first.url %>" target="_blank"><%= @entry.evidence.first.url %></a>
+      </blockquote>
+    <%- end -%>
+    <%- if @entry.recommendations.any? -%>
+        <h6>Recommendations for this entry</h6>
+        <blockquote>
+          <%= render :partial => "recommendations/recommendation_entry_summary", :collection => @entry.recommendations %>
+        </blockquote>
+    <%- end -%>
+  </div>
+  <%- else -%>
+    <div id="existing-entries" class="tab-section">
+      <%- if current_user.entries.any? -%>
+        <%= render :partial => 'entries/entry', :collection => current_user.entries.sorted_by_most_recent %>
+      <%- else -%>
+        <div class="no-entries-message">You haven't created any entries yet!</div>
+      <%- end -%>
+    </div>
+  <%- end -%>
+</div>

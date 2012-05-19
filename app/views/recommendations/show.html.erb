@@ -1,0 +1,36 @@
+<div id="main" class="span14 offset1">  
+  <ul class="tabs">
+    <%- if current_user.is_recommender? -%>
+      <li class="active">
+        <a href="#recommendations-tab">Recommendations</a>
+      </li>
+    <%- else -%>
+      <li>
+        <a href="#entries-tab">Entries</a>
+      </li>
+      <li class="active">
+        <a href="#recommendations-tab">Recommendations</a>
+      </li>
+      <li>
+        <a href="#tags-tab">Tags</a>
+      </li>
+    <%- end -%>
+  </ul>
+  <div class="tab-content">
+    <%- if current_user.is_recommender? -%>
+      <div id="recommendations-tab" class="active">
+        <%= render :partial => "recommendations/recommendations_tab" %>
+      </div>
+    <%- else -%>
+      <div id="entries-tab">
+        <%= render :partial => "entries/entries_tab" %>
+      </div>
+      <div id="recommendations-tab" class="active">
+
+      </div>
+      <div id="tags-tab">
+
+      </div>
+    <%- end -%>
+  </div>
+</div>

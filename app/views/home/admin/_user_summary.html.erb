@@ -1,0 +1,23 @@
+<%- u = user_summary %>
+<div class="user-summary row">
+  <div class="span11">
+    <h5><%= u.full_name %></h5>
+    <div class="row">
+      <div class="span10">
+        <%- if u.tags.length == 0 -%>
+          <em>no tags</em>
+        <%- elsif u.tags.count < 4 -%>
+          <em><%= u.tags.collect{|t| t[:tag].name.capitalize}.join(", ") %></em>
+        <%- else -%>
+          <em><%= u.tags.collect{|t| t[:tag].name.capitalize}[0..3].join(", ") %></em>
+        <%- end -%>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%- if u.recommendations.confirmed_count == 0 -%>
+          <em>no recommendations</em>
+        <%- else -%>
+          <em>&#43;<%= u.recommendations.confirmed_count %> confirmed recommendations</em>
+        <%- end -%>
+      </div>
+    </div>
+  </div>
+</div>

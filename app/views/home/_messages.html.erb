@@ -1,0 +1,15 @@
+<%- if current_user.is_recommender? -%>
+  <%- if flash[:message] -%>
+    <div class="alert-message success" data-alert="alert">
+      <a class="close" href="#">×</a>
+      <p><%= flash[:message] %></p>
+    </div>
+  <%- end -%>
+<%- else -%>
+  <%- if current_user.recommendations.pending.any? -%>
+    <div class="alert-message info" data-alert="alert">
+      <a class="close" href="#">×</a>
+      <p>You've got pending recommendations! Click on the "Recommendations" tab to review them</p>
+    </div>
+  <%- end -%>
+<%- end -%>

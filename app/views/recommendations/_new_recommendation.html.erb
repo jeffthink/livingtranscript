@@ -1,0 +1,14 @@
+<%- r = new_recommendation -%>
+<div class="recommendation">
+  <h3><%= r.entry.user.full_name %> -- <%= r.entry.title %>&nbsp;&nbsp;<span class="label notice">New!</span></h3>
+  <h6>reflection</h6>
+  <blockquote>
+    <%= r.entry.reflection %>
+  </blockquote>
+  <%- if r.entry.evidence.any? -%>
+    <h6>evidence</h6>
+    <blockquote>
+      <a href="<%= r.entry.evidence.first.url %>"><%= r.entry.evidence.first.url %></a>
+    </blockquote>
+  <%- end -%>
+</div>

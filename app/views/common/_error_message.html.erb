@@ -1,0 +1,14 @@
+<%- if resource.errors.full_messages.any? -%>
+  <div class="alert-message block-message error">
+    <ul>
+      <%- resource.errors.full_messages.each {|error| -%>
+        <li><%= error %></li>
+      <%- } -%>
+    </ul>
+  </div>
+<%- end -%>
+<%- if flash[:alert] && !flash[:alert].include?("You need to sign in or sign up before continuing.") -%>
+  <div class="alert-message error">
+    <p><%= flash[:alert] %></p>
+  </div>
+<%- end -%>

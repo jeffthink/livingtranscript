@@ -1,0 +1,27 @@
+<div class="row">
+  <div id="sidebar" class="span5 offset1" style="min-height: 500px;">
+    <div id="current-system-summary">
+      <h4>Summary Stats</h4>
+      <p>
+        <strong># of Users:</strong>&nbsp;&nbsp;<%= User.count %>
+      </p>
+      <p>
+        <strong># of Entries:</strong>&nbsp;&nbsp;<%= Entry.count %>
+      </p>
+      <p>
+        <strong># of Recommendations:</strong>&nbsp;&nbsp;<%= Recommendation.count_confirmed %>
+      </p>
+      <p>
+        <strong># of Tags:</strong>&nbsp;&nbsp;<%= Tag.count_all %>
+      </p>
+    </div>
+    <div id="recent-tags">
+      <h4>Recent Tags</h4>
+      <ul id="admin-tags-cloud" class="tagcloud noninteractive" style="width: 200px"></ul>
+    </div>
+  </div>
+  <div id="main-admin" class="span16 offset1">
+    <h4>Skill Search</h4>
+    <%= render :partial => "admin/skill_filter" %>
+  </div>
+</div>

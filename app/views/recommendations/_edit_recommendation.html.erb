@@ -1,0 +1,51 @@
+<%- r = edit_recommendation %>
+<%= form_for r , :url => { :controller => "recommendations", :action => "update" }, :html => {:id => "edit-recommendation"} do |f| %>
+  <fieldset id="recommendation">
+    <div class="row">
+      <div class="span8 columns">
+        <div class="recommendation-entry-title">
+          <h4><%= r.entry.title %></h4>
+        </div>
+        <div class="clearfix">
+          <%= f.text_area :text, :size => "57x6", :placeholder => "add recommendation supporting " + r.entry.user.first_name + "'s work for this entry*" %>
+        </div>
+        <div class="clearfix">
+          <%= f.text_area :feedback, :size => "57x4", :placeholder => "add constructive feedback regarding " + r.entry.user.first_name + "'s work for this entry*" %>
+          <span class="help-block">* all fields entered in this recommendation are private to <%= r.entry.user.first_name %></span>
+        </div>
+        <%- if r.status==Recommendation::STATUS_NEW -%>
+          <%= f.hidden_field :status, :value => Recommendation::STATUS_PENDING_APPROVAL %>
+        <%- end -%>
+
+      </div>
+      <div class="span8 columns">
+        <div id="accordion">
+          <h4><a href="#">Select Tags</a></h4>
+          <div>
+            <div id="workspace-tag-cloud" style="height: 65px;"></div>
+            <%= text_field_tag :recommendation_tags, "", :class => "tags-input" %>
+          </div>
+          <h4><a href="#">Choose Evidence</a></h4>
+          <div class="clearfix">
+            <div class="input-prepend" style="margin-top:20px;">
+                <span class="add-on">http://</span>
+              <%= text_field_tag :recommendation_evidence, "", :placeholder => "add link for evidence...", :class => "xlarge" %>
+            </div>
+            <span class="help-block">e.g. youtube videos, blog posts, public google docs, etc.</span>
+          </div>
+          <h4><a href="#">Specify Relationship</a></h4>
+          <div>
+            <div style="margin-top:20px;">
+              <%= f.text_field :relationship, :placeholder => "I am " + r.entry.user.first_name + "'s __________", :class => "span12" %>
+              <span class="help-block">e.g. mentor, classmate, professor, coworker </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Save", :class => "btn primary" %>
+      <a id="cancel-new-entry" href="#" class="btn default">Cancel</a>
+    </div>
+  </fieldset>
+<%- end -%>

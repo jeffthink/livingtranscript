@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+log/*
+tmp/*
+tmp/**/*
+coverage/*
+coverage/**/*
+.bundle
+.idea
+config/initializers/01_app_config.rb
+config/deploy.rb
+config/database.yml

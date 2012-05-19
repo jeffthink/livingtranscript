@@ -1,0 +1,71 @@
+<div id="recommendations-tab" class="active">
+  <%- if current_user.is_recommender? -%>
+    <%- if current_user.requested_recommendations.new.any? -%>
+    <div id="new-recommendations" class="span20">
+      <%= render :partial => "recommendations/new_recommendation", :collection => current_user.requested_recommendations.new %>
+    </div>
+    <%- end -%>
+    <%- if current_user.requested_recommendations.confirmed.any? -%>
+    <div id="confirmed-recommendations" class="span20">
+      <%= render :partial => "recommendations/recommendation_i_made", :collection => current_user.requested_recommendations.confirmed %>
+    </div>
+    <%- end -%>
+    <%- if !current_user.requested_recommendations.new.any? && !current_user.requested_recommendations.confirmed.any? -%>
+      You don't have any pending recommendation requests!  Check back later to see your recommendations once your friends have confirmed them.
+    <%- end -%>
+  <%- else -%>
+    <%- if @recommendation -%>
+      <ul class="breadcrumb">
+        <li><a href="#tabs?tab=recommendations">Recommendations</a> <span class="divider">/</span></li>
+        <li class="active"><%= @recommendation.entry.title %></li>
+      </ul>
+      <div id="detailed-recommendation">
+        <h4><%= @recommendation.entry.title %></h4>
+        <p>Your friend (<%= @recommendation.user.email %>) has responded to your request for feedback on your entry</p>
+        <h6>recommendation:</h6>
+        <blockquote><%= @recommendation.text %></blockquote>
+        <h6>constructive feedback:</h6>
+        <blockquote><%= @recommendation.feedback %></blockquote>
+        <%- if @recommendation.tags.any? -%>
+          <h6>tags:</h6>
+          <blockquote><%= @recommendation.tags.collect {|t| t.name}.join(" | ") %></blockquote>
+        <%- end -%>
+        <%- if @recommendation.evidence.any? -%>
+          <h6>evidence:</h6>
+          <blockquote><a href="<%= @recommendation.evidence.first.url %>" target="_blank"><%= @recommendation.evidence.first.url %></a></blockquote>
+        <%- end -%>
+        <%- if @recommendation.relationship -%>
+          <h6>relationship:</h6>
+          <blockquote><%= @recommendation.relationship %></blockquote>
+        <%- end -%>
+        <%- if @recommendation.status == Recommendation::STATUS_PENDING_APPROVAL -%>
+          <h5>the time has come to choose:</h5>
+          <button id="approve-recommendation" class="btn primary">Approve</button>
+          <button id="decline-recommendation" class="btn danger">Decline</button>
+          <%= form_for @recommendation, :html => {:class => "edit-recommendation-status"} do |f| %>
+            <%= hidden_field_tag(:status_only, "true") %>
+            <%= f.hidden_field :status %>
+          <%- end -%>
+        </div>
+      <%- end -%>
+    <%- else -%>
+      <%- if current_user.recommendations.pending.any? -%>
+        <div id="pending-recommendations" class="tab-section">
+          <h4>Pending recommendations</h4>
+          <p>Click on the entry titles to see what your friends have written</p>
+          <%= render :partial => "recommendations/recommendation_summary", :collection => current_user.recommendations.pending %>
+        </div>
+      <%- end -%>
+      <%- if current_user.recommendations.confirmed.any? -%>
+        <div id="confirmed-recommendations" class="tab-section">
+          <h4>Confirmed recommendations</h4>
+          <p>These are recommendations that others have given you, and you have approved</p>
+          <%= render :partial => "recommendations/recommendation_summary", :collection => current_user.recommendations.confirmed %>
+        </div>
+      <%- end -%>
+    <%- end -%>
+    <%- if !current_user.recommendations.pending.any? && !current_user.recommendations.confirmed.any? -%>
+      <p>You do not currently have any recommendations.  Add an entry and request one!</p>
+    <%- end -%>
+  <%- end -%>
+</div>

@@ -1,0 +1,7 @@
+<%- r = recommendation_summary -%>
+<h5><a href="#tabs?tab=recommendations&id=<%= r.id %>"><%= r.entry.title %></a></h5>
+<%- if r.tags.any? -%>
+  <blockquote>
+    <%= r.tags.collect{|t| t.name.capitalize}.join(" | ") %>
+  </blockquote>
+<%- end -%>

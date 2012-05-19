@@ -1,0 +1,26 @@
+<div class="entry" data-entry-id="<%= entry.id %>">
+  <div class="entry-inner">
+    <div class="entry-title">
+      <h5><a href="#tabs?tab=entries&id=<%= entry.id %>"><%= entry.title %></a></h5>
+    </div>
+    <div class="entry-subitems">
+      <%= entry.tags.collect{|t| t.name.capitalize}[0..2].join(", ") %>
+    </div>
+    <% if entry.evidence.any? %>
+    <div class="entry-subitems">
+      | <% entry.evidence.each_with_index do |t,i| %>
+        <a target="_blank" href="<%= "#{t.url}" %>">evidence</a>
+      <%- end -%>
+    </div>
+    <%- end -%>
+    <% if entry.recommendations.confirmed.any? %>
+    <div class="entry-subitems">
+      | <%= pluralize(entry.recommendations.confirmed.length, "recommendation")%>
+    </div>
+    <%- end -%>
+    <div class="entry-subitems">
+      | <a class="entry-edit" data-entry-id="<%= entry.id %>" href="#">edit</a> | <a class="entry-delete" data-entry-id="<%= entry.id %>" href="#">delete</a>
+    </div>
+    <%= hidden_field_tag("entry_id", entry.id) %>
+  </div>
+</div>

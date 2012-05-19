@@ -1,0 +1,24 @@
+<%- r = recommendation_i_made -%>
+<div class="recommendation">
+  <h3><%= r.entry.user.full_name %> -- <%= r.entry.title %>&nbsp;&nbsp;
+    <%- if r.status == Recommendation::STATUS_CONFIRMED -%>
+      <span class="label success">Confirmed</span>
+    <%- elsif r.status == Recommendation::STATUS_NEW -%>
+      <span class="label notice">New!</span>
+    <%- end -%>
+  </h3>
+  <h6>your recommendation</h6>
+  <blockquote>
+    <%= r.text %>
+  </blockquote>
+  <h6>your constructive feedback</h6>
+  <blockquote>
+    <%= r.feedback %>
+  </blockquote>
+  <%- if r.evidence.any? -%>
+    <h6>your evidence</h6>
+    <blockquote>
+      <a href="<%= r.evidence.first.url %>" target="_blank"><%= r.evidence.first.url %></a>
+    </blockquote>
+  <%- end -%>
+</div>
