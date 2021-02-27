@@ -1,7 +1,5 @@
-#Living Transcript
+# Living Transcript
 
-The living transcript is **accomplishment tracking for human beings**.
+The Living Transcript tool was created as a way to create a more humane job posting and resume creation process. The origination was that resumes kind of suck - they don't do a great job at expressing things beyond job responsibilities (e.g. artistic expressions, how well your teammates enjoyed working with you, etc.), and employers find them too buzz-wordy to rely on for hiring. By separating accomplishments vs. competencies, and introducing "vouchers" for social validation, we hoped to force some rethinking of this process.
 
-We all know the pain of maintaining multiple doc/pdf resumes, and many also know the pain of trying to find the human element amongst a collage of buzz words.  With a focus on quick "as you go" accomplishment entries, recommendations from friends and colleagues, and entry tags that connect people and accomplishments together, the living transcript is an attempt to replace the resume with not only a better technology solution, but also a better human-focused process solution.
-
-This is a pretty standard rails app, so outside of some config tweaking, should be able to get up and running the traditional rails way.
+We build a simplified version of this for Tulane in 2011, and although it was a successful pilot project, all parties involved decided to move onto other projects afterwards. Since that point, platforms like LinkedIn and tools like [EnchanceCV](https://enhancv.com/) have improved the experience a bit, but by and large, this problem still exists so I hope someone else out there is inspired by this (not very defunct) repository :)
